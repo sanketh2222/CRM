@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService';
+import CustomerService from '../services/CustomerService';
+// import EmployeeService from '../services/CustomerService';
 
-class CreateEmployeeComponent extends Component {
+class CreateCustomerComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -24,7 +25,7 @@ class CreateEmployeeComponent extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
+            CustomerService.getCustomerById(this.state.id).then( (res) =>{
                 let employee = res.data;
                 this.setState({first_name: employee.first_name,
                     last_name: employee.last_name,
@@ -35,17 +36,17 @@ class CreateEmployeeComponent extends Component {
     }
     saveOrUpdateEmployee = (e) => {
         e.preventDefault();
-        let employee = {first_name: this.state.first_name, last_name: this.state.last_name, email: this.state.email};
-        console.log('employee => ' + JSON.stringify(employee));
+        let customer = {first_name: this.state.first_name, last_name: this.state.last_name, email: this.state.email};
+        console.log('customer => ' + JSON.stringify(customer));
 
         // step 5
         if(this.state.id === '_add'){
-            EmployeeService.createEmployee(employee).then(res =>{
-                this.props.history.push('/employees');
+            CustomerService.createCustomer(customer).then(res =>{
+                this.props.history.push('/customers');
             });
         }else{
-            EmployeeService.updateEmployee(employee, this.state.id).then( res => {
-                this.props.history.push('/employees');
+            CustomerService.updateCustomer(customer, this.state.id).then( res => {
+                this.props.history.push('/customers');
             });
         }
     }
@@ -63,7 +64,7 @@ class CreateEmployeeComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push('/customers');
     }
 
     getTitle(){
@@ -114,4 +115,4 @@ class CreateEmployeeComponent extends Component {
     }
 }
 
-export default CreateEmployeeComponent
+export default CreateCustomerComponent

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService';
+import CustomerService from '../services/CustomerService';
 
-class UpdateEmployeeComponent extends Component {
+class UpdateCustomerComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -13,11 +13,11 @@ class UpdateEmployeeComponent extends Component {
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.updateEmployee = this.updateEmployee.bind(this);
+        this.updateCustomer = this.updateCustomer.bind(this);
     }
 
     componentDidMount(){
-        EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
+        CustomerService.getEmployeeById(this.state.id).then( (res) =>{
             let employee = res.data;
             this.setState({firstName: employee.firstName,
                 lastName: employee.lastName,
@@ -26,12 +26,12 @@ class UpdateEmployeeComponent extends Component {
         });
     }
 
-    updateEmployee = (e) => {
+    updateCustomer = (e) => {
         e.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
         console.log('employee => ' + JSON.stringify(employee));
         console.log('id => ' + JSON.stringify(this.state.id));
-        EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+        CustomerService.updateEmployee(employee, this.state.id).then( res => {
             this.props.history.push('/employees');
         });
     }
@@ -78,7 +78,7 @@ class UpdateEmployeeComponent extends Component {
                                                 value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.updateEmployee}>Save</button>
+                                        <button className="btn btn-success" onClick={this.updateCustomer}>Save</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
@@ -91,4 +91,4 @@ class UpdateEmployeeComponent extends Component {
     }
 }
 
-export default UpdateEmployeeComponent
+export default UpdateCustomerComponent

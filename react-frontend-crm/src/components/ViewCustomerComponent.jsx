@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService'
+import CustomerService from '../services/CustomerService'
 
-class ViewEmployeeComponent extends Component {
+class ViewCustomerComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             id: this.props.match.params.id,
-            employee: {}
+            customers: {}
         }
     }
 
     componentDidMount(){
-        EmployeeService.getEmployeeById(this.state.id).then( res => {
-            this.setState({employee: res.data});
+        CustomerService.getCustomerById(this.state.id).then( res => {
+            this.setState({customers: res.data});
         })
     }
 
@@ -22,21 +22,21 @@ class ViewEmployeeComponent extends Component {
             <div>
                 <br></br>
                 <div className = "card col-md-6 offset-md-3">
-                    <h3 className = "text-center"> View Employee Details</h3>
+                    <h3 className = "text-center"> View Customer Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> Employee First Name: </label>
-                            <div> { this.state.employee.first_name }</div>
+                            <label> Customer First Name: </label>
+                            <div> { this.state.customers.first_name }</div>
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label> Employee Last Name: </label>
-                            <div> { this.state.employee.last_name }</div>
+                            <label> Customer Last Name: </label>
+                            <div> { this.state.customers.last_name }</div>
                         </div>
                         <br></br>
                         <div className = "row">
-                            <label> Employee Email ID: </label>
-                            <div> { this.state.employee.email }</div>
+                            <label> Customer Email ID: </label>
+                            <div> { this.state.customers.email }</div>
                         </div>
                     </div>
 
@@ -46,4 +46,4 @@ class ViewEmployeeComponent extends Component {
     }
 }
 
-export default ViewEmployeeComponent
+export default ViewCustomerComponent

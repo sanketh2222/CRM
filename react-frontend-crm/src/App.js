@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import ListEmployeeComponent from './components/ListEmployeeComponent';
+import ListCustomerComponent from './components/ListCustomerComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
-import CreateEmployeeComponent from './components/CreateEmployeeComponent';
-import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
-import ViewEmployeeComponent from './components/ViewEmployeeComponent';
+import CreateCustomerComponent from './components/CreateCustomerComponent';
+// import UpdateEmployeeComponent from './components/UpdateCustomerComponent';
+import ViewCustomerComponent from './components/ViewCustomerComponent';
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
               <HeaderComponent />
                 <div className="container">
                     <Switch> 
-                          <Route path = "/" exact component = {ListEmployeeComponent}></Route>
-                          <Route path = "/employees" component = {ListEmployeeComponent}></Route>
-                          <Route path = "/add-employee/:id" component = {CreateEmployeeComponent}></Route>
-                          <Route path = "/view-employee/:id" component = {ViewEmployeeComponent}></Route>
+                          <Route path = "/" exact component = {ListCustomerComponent}></Route>
+                          <Route path = "/customers" component = {ListCustomerComponent}></Route>
+                          <Route path = "/add-customer/:id" component = {CreateCustomerComponent}></Route>
+                          <Route path = "/view-customers/:id" component = {ViewCustomerComponent}></Route>
                           {/* <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route> */}
                     </Switch>
                 </div>
