@@ -6,7 +6,7 @@ import ListCustomerComponent from './components/ListCustomerComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import CreateCustomerComponent from './components/CreateCustomerComponent';
-// import UpdateEmployeeComponent from './components/UpdateCustomerComponent';
+import UpdateEmployeeComponent from './components/UpdateCustomerComponent';
 import ViewCustomerComponent from './components/ViewCustomerComponent';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                           <Route path = "/customers" component = {ListCustomerComponent}></Route>
                           <Route path = "/add-customers/:id" component = {CreateCustomerComponent}></Route>
                           <Route path = "/view-customers/:id" component = {ViewCustomerComponent}></Route>
-                          {/* <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route> */}
+                          <Route path = "/update-customer/:id" component = {UpdateEmployeeComponent}></Route>
                     </Switch>
                 </div>
               <FooterComponent />

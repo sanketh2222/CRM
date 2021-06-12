@@ -17,11 +17,11 @@ class UpdateCustomerComponent extends Component {
     }
 
     componentDidMount(){
-        CustomerService.getEmployeeById(this.state.id).then( (res) =>{
+        CustomerService.getCustomerById(this.state.id).then( (res) =>{
             let customer = res.data;
-            this.setState({firstName: customer.firstName,
-                lastName: customer.lastName,
-                emailId : customer.emailId
+            this.setState({firstName: customer.first_name,
+                lastName: customer.last_name,
+                emailId : customer.email
             });
         });
     }
@@ -31,7 +31,7 @@ class UpdateCustomerComponent extends Component {
         let customer = {first_name: this.state.firstName, last_name: this.state.lastName, email: this.state.emailId};
         console.log('customer => ' + JSON.stringify(customer));
         console.log('id => ' + JSON.stringify(this.state.id));
-        CustomerService.updateEmployee(customer, this.state.id).then( res => {
+        CustomerService.updateCustomer(customer, this.state.id).then( res => {
             this.props.history.push('/customers');
         });
     }

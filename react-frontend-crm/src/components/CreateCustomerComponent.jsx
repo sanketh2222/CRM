@@ -26,10 +26,10 @@ class CreateCustomerComponent extends Component {
             return
         }else{
             CustomerService.getCustomerById(this.state.id).then( (res) =>{
-                let employee = res.data;
-                this.setState({first_name: employee.first_name,
-                    last_name: employee.last_name,
-                    email : employee.email
+                let customer = res.data;
+                this.setState({first_name: customer.first_name,
+                    last_name: customer.last_name,
+                    email : customer.email
                 });
             });
         }        

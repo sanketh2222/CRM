@@ -22,7 +22,7 @@ class ListCustomerComponent extends Component {
         this.props.history.push(`/view-customers/${id}`);
     }
     editCustomer(id){
-        this.props.history.push(`/add-customers/${id}`);
+        this.props.history.push(`/update-customer/${id}`);
     }
 
     componentDidMount(){
@@ -32,7 +32,7 @@ class ListCustomerComponent extends Component {
     }
 
     addCustomer(){
-        this.props.history.push('/add-customer/_add');
+        this.props.history.push(`/add-customers/_add`);
     }
 
     render() {
