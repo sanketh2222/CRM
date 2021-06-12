@@ -18,21 +18,21 @@ class UpdateCustomerComponent extends Component {
 
     componentDidMount(){
         CustomerService.getEmployeeById(this.state.id).then( (res) =>{
-            let employee = res.data;
-            this.setState({firstName: employee.firstName,
-                lastName: employee.lastName,
-                emailId : employee.emailId
+            let customer = res.data;
+            this.setState({firstName: customer.firstName,
+                lastName: customer.lastName,
+                emailId : customer.emailId
             });
         });
     }
 
     updateCustomer = (e) => {
         e.preventDefault();
-        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
-        console.log('employee => ' + JSON.stringify(employee));
+        let customer = {first_name: this.state.firstName, last_name: this.state.lastName, email: this.state.emailId};
+        console.log('customer => ' + JSON.stringify(customer));
         console.log('id => ' + JSON.stringify(this.state.id));
-        CustomerService.updateEmployee(employee, this.state.id).then( res => {
-            this.props.history.push('/employees');
+        CustomerService.updateEmployee(customer, this.state.id).then( res => {
+            this.props.history.push('/customers');
         });
     }
     
@@ -49,7 +49,7 @@ class UpdateCustomerComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push('/customers');
     }
 
     render() {

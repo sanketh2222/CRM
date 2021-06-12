@@ -2,7 +2,6 @@ package com.investments.crm.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
 
 import com.investments.crm.entity.Customer;
 import com.investments.crm.service.CustomerService;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +55,19 @@ public class CustomerController {
     @GetMapping("/Customers/{id}")
     public ResponseEntity<Customer> findCustomerbyId(@PathVariable int id ){
         if (customerService.findCustomerById(id) != null){
+            return new ResponseEntity<Customer>(customerService.findCustomerById(id), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/Customers/{id}")
+    public ResponseEntity<Customer> updateCustomerbyId(@PathVariable int id ,@RequestBody Customer customer){
+        Customer customerDetails = customerService.findCustomerById(id);
+        if (customerDetails != null){
+            customerDetails.setFirst_name(customer.getFirst_name());
+            customerDetails.setLast_name(customer.getLast_name());
+            customerDetails.setEmail(customer.getEmail());
+            customerService.insert(customerDetails);
             return new ResponseEntity<Customer>(customerService.findCustomerById(id), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -15,7 +15,7 @@ class CreateCustomerComponent extends Component {
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.saveOrUpdateEmployee = this.saveOrUpdateEmployee.bind(this);
+        this.saveOrUpdateCustomer = this.saveOrUpdateCustomer.bind(this);
     }
 
     // step 3
@@ -34,7 +34,7 @@ class CreateCustomerComponent extends Component {
             });
         }        
     }
-    saveOrUpdateEmployee = (e) => {
+    saveOrUpdateCustomer = (e) => {
         e.preventDefault();
         let customer = {first_name: this.state.first_name, last_name: this.state.last_name, email: this.state.email};
         console.log('customer => ' + JSON.stringify(customer));
@@ -69,9 +69,9 @@ class CreateCustomerComponent extends Component {
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Employee</h3>
+            return <h3 className="text-center">Add Customer</h3>
         }else{
-            return <h3 className="text-center">Update Employee</h3>
+            return <h3 className="text-center">Update Customer</h3>
         }
     }
     render() {
@@ -102,7 +102,7 @@ class CreateCustomerComponent extends Component {
                                                 value={this.state.email} onChange={this.changeEmailHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.saveOrUpdateEmployee}>Save</button>
+                                        <button className="btn btn-success" onClick={this.saveOrUpdateCustomer}>Save</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
