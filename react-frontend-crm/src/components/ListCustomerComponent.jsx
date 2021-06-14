@@ -39,10 +39,13 @@ class ListCustomerComponent extends Component {
         return (
             <div>
                  <h2 className="text-center">Customers List</h2>
-                 <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addCustomer}> Add Customer</button>
-                 </div>
+                 
+                 <button className="btn btn-primary"  onClick={this.addCustomer}> Add Customer</button>
                  <br></br>
+                 {/* <div className = "row">
+                    <button className="btn btn-primary"  onClick={this.addCustomer}> Add Customer</button>
+                 </div> */}
+                 {/* <br></br> */}
                  <div className = "row">
                         <table className = "table table-striped table-bordered">
 
